@@ -1,0 +1,22 @@
+[
+    {
+        "personUUID": "3247c340-c712-402e-b400-0a23a9368c97",
+        "firstname": "Max",
+        "lastname": "Mustermann"
+    },
+    {
+        "bookUUID": "db117daa-e295-4597-abcd-a69496797dc0",
+        "firstname": "Marie",
+        "lastname": "Müller"
+    },
+    {
+        "bookUUID": "c746a291-0ef9-4b2a-8268-392b12d636bd",
+        "firstname": "Amstutz",
+        "lastname": "Lehmann"
+    },
+    {
+        "bookUUID": "73bd4187-a5b7-4864-be79-327bb8ed43bf",
+        "firstname": "Max",
+        "lastname": "Meier"
+    }
+]
