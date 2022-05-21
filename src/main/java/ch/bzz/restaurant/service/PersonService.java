@@ -2,6 +2,7 @@ package ch.bzz.restaurant.service;
 
 import ch.bzz.restaurant.data.DataHandler;
 import ch.bzz.restaurant.model.Person;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,6 +10,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**

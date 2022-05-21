@@ -38,8 +38,9 @@ public class DataHandler {
      * @return
      */
     public static DataHandler getInstance() {
-        if (instance == null)
+        if (instance == null){
             instance = new DataHandler();
+        }
         return instance;
     }
 
@@ -48,15 +49,18 @@ public class DataHandler {
      * reads all reservations
      * @return list of reservations
      */
+
     public List<Reservation> readAllReservations() {
         return getReservationList();
     }
+
 
     /**
      * reads a reservations by its uuid
      * @param reservationUUID
      * @return the Reservation (null=not found)
      */
+
     public Reservation readReservationByUUID(String reservationUUID) {
         Reservation reservation = null;
         for (Reservation entry : getReservationList()) {
@@ -66,6 +70,7 @@ public class DataHandler {
         }
         return reservation;
     }
+
 
     /**
      * reads all Persons
@@ -100,11 +105,13 @@ public class DataHandler {
         return getRestaurantList();
     }
 
+
     /**
      * reads a restaurant by its uuid
      * @param restaurantUUID
      * @return the Restaurant (null=not found)
      */
+
     public Restaurant readRestaurantByUUID(String restaurantUUID) {
         Restaurant restaurant = null;
         for (Restaurant entry : getRestaurantList()) {
@@ -115,9 +122,11 @@ public class DataHandler {
         return restaurant;
     }
 
+
     /**
      * reads the reservations from the JSON-file
      */
+
     private void readReservationJSON() {
         try {
             String path = Config.getProperty("reservationJSON");
@@ -134,14 +143,14 @@ public class DataHandler {
         }
     }
 
+
     /**
      * reads the persons from the JSON-file
      */
     private void readPersonJSON() {
         try {
-            String path = Config.getProperty("personJSON");
             byte[] jsonData = Files.readAllBytes(
-                    Paths.get(path)
+                    Paths.get(Config.getProperty("personJSON"))
             );
             ObjectMapper objectMapper = new ObjectMapper();
             Person[] persons = objectMapper.readValue(jsonData, Person[].class);
@@ -153,9 +162,10 @@ public class DataHandler {
         }
     }
 
-    /**
+    /*
      * reads the restaurants from the JSON-file
      */
+
     private void readRestaurantJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
@@ -173,23 +183,28 @@ public class DataHandler {
         }
     }
 
+
     /**
      * gets reservationList
      *
      * @return value of reservationList
      */
+
     private List<Reservation> getReservationList() {
         return reservationList;
     }
+
 
     /**
      * sets reservationList
      *
      * @param reservationList the value to set
      */
+
     private void setReservationList(List<Reservation> reservationList) {
         this.reservationList = reservationList;
     }
+
 
     /**
      * gets personList
@@ -214,6 +229,7 @@ public class DataHandler {
      *
      * @return value of restaurantList
      */
+
     private List<Restaurant> getRestaurantList() {
         return restaurantList;
     }
@@ -223,6 +239,7 @@ public class DataHandler {
      *
      * @param restaurantList the value to set
      */
+
     private void setRestaurantList(List<Restaurant> restaurantList) {
         this.restaurantList = restaurantList;
     }

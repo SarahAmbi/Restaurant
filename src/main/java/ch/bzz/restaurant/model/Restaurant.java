@@ -1,7 +1,5 @@
 package ch.bzz.restaurant.model;
 
-import java.util.List;
-
 /**
  * restaurant which can be booked
  *
@@ -15,7 +13,6 @@ public class Restaurant {
     private String name;
     private String place;
     private int numberOfSeats;
-    private List<Reservation> reservations;
 
     /**
      * gets restaurantUUID
@@ -89,21 +86,5 @@ public class Restaurant {
         this.numberOfSeats = numberOfSeats;
     }
 
-    /**
-     * gets reservation list
-     *
-     * @return value of reservation list
-     */
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
 
-    /**
-     * sets reservation list
-     *
-     * @param reservations the value to set
-     */
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
 }

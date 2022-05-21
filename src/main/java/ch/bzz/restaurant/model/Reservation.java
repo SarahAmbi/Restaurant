@@ -3,9 +3,6 @@ package ch.bzz.restaurant.model;
 import ch.bzz.restaurant.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 /**
  * a reservation in our restaurant
  *
@@ -18,14 +15,24 @@ public class Reservation {
     private Person client;
 
     private String reservationUUID;
-    private LocalDate date;
-    private LocalDateTime time;
+    private String date;
+    private String time;
     private int numberOfPersons;
 
+    /**
+     * gets personUUID
+     *
+     * @return the value of personUUID
+     */
     public String getPersonUUID() {
         return getClient().getPersonUUID();
     }
 
+    /**
+     * sets personUUID
+     *
+     * @param personUUID the value to set
+     */
     public void setPersonUUID(String personUUID) {
         setClient(new Person());
         Person person = DataHandler.getInstance().readPersonByUUID(personUUID);
@@ -76,7 +83,7 @@ public class Reservation {
      *
      * @return the value of booked date
      */
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -85,7 +92,7 @@ public class Reservation {
      *
      * @param date the value to set
      */
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -94,7 +101,7 @@ public class Reservation {
      *
      * @return the value of booked time
      */
-    public LocalDateTime getTime() {
+    public String getTime() {
         return time;
     }
 
@@ -103,7 +110,7 @@ public class Reservation {
      *
      * @param time the value to set
      */
-    public void setTime(LocalDateTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

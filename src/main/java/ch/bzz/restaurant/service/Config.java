@@ -31,6 +31,7 @@ public class Config extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         HashSet providers = new HashSet<Class<?>>();
+        providers.add(TestService.class);
         providers.add(ReservationService.class);
         providers.add(PersonService.class);
         providers.add(RestaurantService.class);
@@ -62,7 +63,7 @@ public class Config extends Application {
         try {
             inputStream = new FileInputStream(PROPERTIES_PATH);
             properties.load(inputStream);
-            if (inputStream != null) inputStream.close();
+            inputStream.close();
         } catch (IOException ex) {
             ex.printStackTrace();
             throw new RuntimeException();
