@@ -134,9 +134,9 @@ public class Reservation {
     }
 
      /**
-     * gets isRegularCustumer
+     * gets regularCustumer
      *
-     * @return the value of isRegularCustumer
+     * @return the value of regularCustumer
      */
     public boolean isRegularCustumer() {
         return regularCustumer;
@@ -144,9 +144,9 @@ public class Reservation {
 
     
      /**
-     * sets isRegularCustumer
+     * sets regularCustumer
      *
-     * @param isRegularCustumer the value to set
+     * @param regularCustumer the value to set
      */
     public void setRegularCustumer(boolean regularCustumer) {
         this.regularCustumer = regularCustumer;
