@@ -18,6 +18,7 @@ public class Reservation {
     private String date;
     private String time;
     private int numberOfPersons;
+    private boolean regularCustumer;
 
     /**
      * gets personUUID
@@ -130,5 +131,13 @@ public class Reservation {
      */
     public void setNumberOfPersons(int numberOfPersons) {
         this.numberOfPersons = numberOfPersons;
+    }
+
+    public boolean isRegularCustumer() {
+        return regularCustumer;
+    }
+
+    public void setRegularCustumer(boolean regularCustumer) {
+        this.regularCustumer = regularCustumer;
     }
 }

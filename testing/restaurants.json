@@ -1,0 +1,20 @@
+[
+    {
+        "restaurantUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+        "name": "Nüni",
+        "place": "Zurich",
+        "numberOfSeats": 100
+    },
+    {
+        "restaurantUUID": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
+        "name": "Rosi",
+        "place": "Zurich",
+        "numberOfSeats": 50
+    },
+    {
+        "restaurantUUID": "06fc334d-7b02-434f-9222-6544d30d8832",
+        "name": "Parea",
+        "place": "Zurich",
+        "numberOfSeats": 150
+    }
+]   
