@@ -1,0 +1,235 @@
+{
+	"id": "9674385f-3b0e-459d-b132-a50ea7243a01",
+	"name": "Restaurant",
+	"timestamp": "2022-05-23T17:52:54.688Z",
+	"collection_id": "c741196c-738a-494e-99b9-07b745d51a4c",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 7,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "a4e3f001-dc2a-4dbf-80a6-39e808db0b9a",
+			"name": "Testservice",
+			"url": "http://localhost:8080/Restaurant-1.0/resource/test/test",
+			"time": 62,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				62
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "83fa9909-7055-4ded-9889-519c894ff92d",
+			"name": "List Person",
+			"url": "http://localhost:8080/Restaurant-1.0/resource/person/list",
+			"time": 100,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				100
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "626848d1-b5a5-4d61-b3ad-2822716ad50f",
+			"name": "List Reservation",
+			"url": "http://localhost:8080/Restaurant-1.0/resource/reservation/list",
+			"time": 27,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				27
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "0169681a-dd2f-4545-98ff-693045b267ed",
+			"name": "List Restaurant",
+			"url": "http://localhost:8080/Restaurant-1.0/resource/restaurant/list",
+			"time": 77,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				77
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7fbd438f-df68-4ada-a19b-337869030072",
+			"name": "Read by UUID Reservation",
+			"url": "http://localhost:8080/Restaurant-1.0/resource/reservation/read?uuid=ecd83148-5341-43c6-81ed-f3f4595965dc",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "05f3e0bc-1067-49a5-ab06-237426caac7f",
+			"name": "Read by UUID Restaurant",
+			"url": "http://localhost:8080/Restaurant-1.0/resource/restaurant/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "8a84e44c-79c9-439d-a025-69573de2b598",
+			"name": "Read by UUID Person",
+			"url": "http://localhost:8080/Restaurant-1.0/resource/person/read?uuid=3247c340-c712-402e-b400-0a23a9368c97",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 297,
+	"collection": {
+		"requests": [
+			{
+				"id": "a4e3f001-dc2a-4dbf-80a6-39e808db0b9a",
+				"method": "GET"
+			},
+			{
+				"id": "83fa9909-7055-4ded-9889-519c894ff92d",
+				"method": "GET"
+			},
+			{
+				"id": "626848d1-b5a5-4d61-b3ad-2822716ad50f",
+				"method": "GET"
+			},
+			{
+				"id": "0169681a-dd2f-4545-98ff-693045b267ed",
+				"method": "GET"
+			},
+			{
+				"id": "7fbd438f-df68-4ada-a19b-337869030072",
+				"method": "GET"
+			},
+			{
+				"id": "05f3e0bc-1067-49a5-ab06-237426caac7f",
+				"method": "GET"
+			},
+			{
+				"id": "8a84e44c-79c9-439d-a025-69573de2b598",
+				"method": "GET"
+			}
+		]
+	}
+}
