@@ -133,10 +133,21 @@ public class Reservation {
         this.numberOfPersons = numberOfPersons;
     }
 
+     /**
+     * gets isRegularCustumer
+     *
+     * @return the value of isRegularCustumer
+     */
     public boolean isRegularCustumer() {
         return regularCustumer;
     }
 
+    
+     /**
+     * sets isRegularCustumer
+     *
+     * @param isRegularCustumer the value to set
+     */
     public void setRegularCustumer(boolean regularCustumer) {
         this.regularCustumer = regularCustumer;
     }
