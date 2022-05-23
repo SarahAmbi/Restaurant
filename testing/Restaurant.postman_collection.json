@@ -187,6 +187,47 @@
 			"response": []
 		},
 		{
+			"name": "Read by wrong UUID Reservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", () => {",
+							"  pm.expect(pm.response.code).to.eql(410);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/read?uuid=ecd83148-5341-43c6-81ed-f3f4595965db",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd83148-5341-43c6-81ed-f3f4595965db"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Read by UUID Restaurant",
 			"event": [
 				{
@@ -228,6 +269,47 @@
 			"response": []
 		},
 		{
+			"name": "Read by wrong UUID Restaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", () => {",
+							"  pm.expect(pm.response.code).to.eql(410);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/restaurant/read?uuid=ecd96148-5341-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd96148-5341-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Read by UUID Person",
 			"event": [
 				{
@@ -262,6 +344,47 @@
 						{
 							"key": "uuid",
 							"value": "3247c340-c712-402e-b400-0a23a9368c97"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read by wrong UUID Person",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", () => {",
+							"  pm.expect(pm.response.code).to.eql(410);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/person/read?uuid=3247c340-c712-402e-b100-0a23a9368c97",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "3247c340-c712-402e-b100-0a23a9368c97"
 						}
 					]
 				}

@@ -1,18 +1,18 @@
 {
-	"id": "9674385f-3b0e-459d-b132-a50ea7243a01",
+	"id": "8eb245fd-e4d0-440f-a985-4901b3907d5e",
 	"name": "Restaurant",
-	"timestamp": "2022-05-23T17:52:54.688Z",
+	"timestamp": "2022-05-23T19:00:22.749Z",
 	"collection_id": "c741196c-738a-494e-99b9-07b745d51a4c",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 7,
+	"totalPass": 10,
 	"totalFail": 0,
 	"results": [
 		{
 			"id": "a4e3f001-dc2a-4dbf-80a6-39e808db0b9a",
 			"name": "Testservice",
 			"url": "http://localhost:8080/Restaurant-1.0/resource/test/test",
-			"time": 62,
+			"time": 197,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -27,7 +27,7 @@
 				}
 			},
 			"times": [
-				62
+				197
 			],
 			"allTests": [
 				{
@@ -39,7 +39,7 @@
 			"id": "83fa9909-7055-4ded-9889-519c894ff92d",
 			"name": "List Person",
 			"url": "http://localhost:8080/Restaurant-1.0/resource/person/list",
-			"time": 100,
+			"time": 26,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -54,7 +54,7 @@
 				}
 			},
 			"times": [
-				100
+				26
 			],
 			"allTests": [
 				{
@@ -66,7 +66,7 @@
 			"id": "626848d1-b5a5-4d61-b3ad-2822716ad50f",
 			"name": "List Reservation",
 			"url": "http://localhost:8080/Restaurant-1.0/resource/reservation/list",
-			"time": 27,
+			"time": 104,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -81,7 +81,7 @@
 				}
 			},
 			"times": [
-				27
+				104
 			],
 			"allTests": [
 				{
@@ -93,7 +93,7 @@
 			"id": "0169681a-dd2f-4545-98ff-693045b267ed",
 			"name": "List Restaurant",
 			"url": "http://localhost:8080/Restaurant-1.0/resource/restaurant/list",
-			"time": 77,
+			"time": 35,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -108,7 +108,7 @@
 				}
 			},
 			"times": [
-				77
+				35
 			],
 			"allTests": [
 				{
@@ -120,7 +120,7 @@
 			"id": "7fbd438f-df68-4ada-a19b-337869030072",
 			"name": "Read by UUID Reservation",
 			"url": "http://localhost:8080/Restaurant-1.0/resource/reservation/read?uuid=ecd83148-5341-43c6-81ed-f3f4595965dc",
-			"time": 8,
+			"time": 33,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -135,11 +135,38 @@
 				}
 			},
 			"times": [
-				8
+				33
 			],
 			"allTests": [
 				{
 					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "24726684-1742-4210-b1e5-8201ee9a2f2d",
+			"name": "Read by wrong UUID Reservation",
+			"url": "http://localhost:8080/Restaurant-1.0/resource/reservation/read?uuid=ecd83148-5341-43c6-81ed-f3f4595965db",
+			"time": 23,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status code is 410": true
+			},
+			"testPassFailCounts": {
+				"Status code is 410": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status code is 410": true
 				}
 			]
 		},
@@ -147,7 +174,7 @@
 			"id": "05f3e0bc-1067-49a5-ab06-237426caac7f",
 			"name": "Read by UUID Restaurant",
 			"url": "http://localhost:8080/Restaurant-1.0/resource/restaurant/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
-			"time": 5,
+			"time": 24,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -162,7 +189,7 @@
 				}
 			},
 			"times": [
-				5
+				24
 			],
 			"allTests": [
 				{
@@ -171,10 +198,37 @@
 			]
 		},
 		{
+			"id": "1ad6a00a-e402-4488-be8c-5bb9416d1253",
+			"name": "Read by wrong UUID Restaurant",
+			"url": "http://localhost:8080/Restaurant-1.0/resource/restaurant/read?uuid=ecd96148-5341-43c6-81ed-f3f4595965dc",
+			"time": 24,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status code is 410": true
+			},
+			"testPassFailCounts": {
+				"Status code is 410": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				24
+			],
+			"allTests": [
+				{
+					"Status code is 410": true
+				}
+			]
+		},
+		{
 			"id": "8a84e44c-79c9-439d-a025-69573de2b598",
 			"name": "Read by UUID Person",
 			"url": "http://localhost:8080/Restaurant-1.0/resource/person/read?uuid=3247c340-c712-402e-b400-0a23a9368c97",
-			"time": 18,
+			"time": 73,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -189,17 +243,44 @@
 				}
 			},
 			"times": [
-				18
+				73
 			],
 			"allTests": [
 				{
 					"Status code is 200": true
 				}
 			]
+		},
+		{
+			"id": "f11da5f1-dd27-400b-8bfe-364ea699c90f",
+			"name": "Read by wrong UUID Person",
+			"url": "http://localhost:8080/Restaurant-1.0/resource/person/read?uuid=3247c340-c712-402e-b100-0a23a9368c97",
+			"time": 38,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status code is 410": true
+			},
+			"testPassFailCounts": {
+				"Status code is 410": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				38
+			],
+			"allTests": [
+				{
+					"Status code is 410": true
+				}
+			]
 		}
 	],
 	"count": 1,
-	"totalTime": 297,
+	"totalTime": 577,
 	"collection": {
 		"requests": [
 			{
@@ -223,11 +304,23 @@
 				"method": "GET"
 			},
 			{
+				"id": "24726684-1742-4210-b1e5-8201ee9a2f2d",
+				"method": "GET"
+			},
+			{
 				"id": "05f3e0bc-1067-49a5-ab06-237426caac7f",
 				"method": "GET"
 			},
 			{
+				"id": "1ad6a00a-e402-4488-be8c-5bb9416d1253",
+				"method": "GET"
+			},
+			{
 				"id": "8a84e44c-79c9-439d-a025-69573de2b598",
+				"method": "GET"
+			},
+			{
+				"id": "f11da5f1-dd27-400b-8bfe-364ea699c90f",
 				"method": "GET"
 			}
 		]
