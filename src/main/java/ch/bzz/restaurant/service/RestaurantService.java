@@ -1,9 +1,11 @@
 package ch.bzz.restaurant.service;
 
 import ch.bzz.restaurant.data.DataHandler;
-import ch.bzz.restaurant.model.Person;
 import ch.bzz.restaurant.model.Restaurant;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -44,6 +46,8 @@ public class RestaurantService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readRestaurant(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String restaurantUUID
     ) {
         int httpStatus = 200;
@@ -59,26 +63,17 @@ public class RestaurantService {
 
     /**
      * inserts a new restaurant
-     * @param name the name
-     * @param place the place
-     * @param numberOfSeats the number of seats
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertRestaurant(
-            @FormParam("name") String name,
-            @FormParam("place") String place,
-            @FormParam("numberOfSeats") int numberOfSeats
+            @Valid @BeanParam Restaurant restaurant
     ) {
-        Restaurant restaurant = new Restaurant();
         restaurant.setRestaurantUUID(UUID.randomUUID().toString());
-        restaurant.setName(name);
-        restaurant.setPlace(place);
-        restaurant.setNumberOfSeats(numberOfSeats);
-
         DataHandler.insertRestaurant(restaurant);
+
         return Response
                 .status(200)
                 .entity("")
@@ -88,27 +83,20 @@ public class RestaurantService {
 
     /**
      * updates a restaurant
-     * @param restaurantUUID the restaurantUUID
-     * @param name the name
-     * @param place the place
-     * @param numberOfSeats the numberOfSeats
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateRestaurant(
-            @FormParam("restaurantUUID") String restaurantUUID,
-            @FormParam("name") String name,
-            @FormParam("place") String place,
-            @FormParam("numberOfSeats") int numberOfSeats
+            @Valid @BeanParam Restaurant restaurant
     ) {
         int httpStatus = 200;
-        Restaurant restaurant = DataHandler.readRestaurantByUUID(restaurantUUID);
-        if (restaurant != null) {
-            restaurant.setName(name);
-            restaurant.setPlace(place);
-            restaurant.setNumberOfSeats(numberOfSeats);
+        Restaurant oldRestaurant = DataHandler.readRestaurantByUUID(restaurant.getRestaurantUUID());
+        if (oldRestaurant != null) {
+            oldRestaurant.setName(restaurant.getName());
+            oldRestaurant.setPlace(restaurant.getPlace());
+            oldRestaurant.setNumberOfSeats(restaurant.getNumberOfSeats());
 
             DataHandler.updateRestaurant();
         } else {
@@ -128,6 +116,8 @@ public class RestaurantService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteRestaurant(
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String restaurantUUID
     ) {
         int httpStatus = 200;

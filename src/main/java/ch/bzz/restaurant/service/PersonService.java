@@ -2,15 +2,12 @@ package ch.bzz.restaurant.service;
 
 import ch.bzz.restaurant.data.DataHandler;
 import ch.bzz.restaurant.model.Person;
-import ch.bzz.restaurant.model.Reservation;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import ch.bzz.restaurant.model.Restaurant;
 
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
@@ -73,15 +70,11 @@ public class PersonService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertPerson(
-            @FormParam("firstname") String firstname,
-            @FormParam("lastname") String lastname
+            @Valid @BeanParam Person person
     ) {
-        Person person = new Person();
         person.setPersonUUID(UUID.randomUUID().toString());
-        person.setFirstname(firstname);
-        person.setLastname(lastname);
-
         DataHandler.insertPerson(person);
+
         return Response
                 .status(200)
                 .entity("")

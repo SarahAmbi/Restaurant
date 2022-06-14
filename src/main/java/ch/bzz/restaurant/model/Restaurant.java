@@ -1,5 +1,8 @@
 package ch.bzz.restaurant.model;
 
+import javax.validation.constraints.*;
+import javax.ws.rs.FormParam;
+
 /**
  * restaurant which can be booked
  *
@@ -9,9 +12,24 @@ package ch.bzz.restaurant.model;
  *
  */
 public class Restaurant {
+    @FormParam("uuid")
+    @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String restaurantUUID;
+
+    @FormParam("name")
+    @NotEmpty
+    @Size(min=5, max=40)
     private String name;
+
+    @FormParam("place")
+    @NotEmpty
+    @Size(min=5,max=40)
     private String place;
+
+    @FormParam("numberOfSeats")
+    @NotNull
+    @DecimalMin(value="1")
+    @DecimalMax(value="300")
     private int numberOfSeats;
 
     /**

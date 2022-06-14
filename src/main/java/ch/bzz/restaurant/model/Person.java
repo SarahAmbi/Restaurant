@@ -1,5 +1,10 @@
 package ch.bzz.restaurant.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
+
 /**
  * the person who booked the reservation
  *
@@ -8,8 +13,18 @@ package ch.bzz.restaurant.model;
  * @version 1.0
  */
 public class Person {
+    @FormParam("uuid")
+    @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String personUUID;
+
+    @FormParam("firstname")
+    @NotEmpty
+    @Size(min=5, max=40)
     private String firstname;
+
+    @FormParam("lastname")
+    @NotEmpty
+    @Size(min=5, max=40)
     private String lastname;
 
     /**
