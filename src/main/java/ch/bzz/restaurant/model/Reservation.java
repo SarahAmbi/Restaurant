@@ -26,6 +26,9 @@ public class Reservation {
      * @return the value of personUUID
      */
     public String getPersonUUID() {
+        if (getClient() == null) {
+            return null;
+        }
         return getClient().getPersonUUID();
     }
 
@@ -36,7 +39,7 @@ public class Reservation {
      */
     public void setPersonUUID(String personUUID) {
         setClient(new Person());
-        Person person = DataHandler.getInstance().readPersonByUUID(personUUID);
+        Person person = DataHandler.readPersonByUUID(personUUID);
         getClient().setPersonUUID(personUUID);
         getClient().setFirstname(person.getFirstname());
         getClient().setLastname(person.getLastname());
