@@ -18,12 +18,12 @@ public class Restaurant {
 
     @FormParam("name")
     @NotEmpty
-    @Size(min=5, max=40)
+    @Size(min=5, max=30)
     private String name;
 
     @FormParam("place")
     @NotEmpty
-    @Size(min=5,max=40)
+    @Size(min=5,max=30)
     private String place;
 
     @FormParam("numberOfSeats")

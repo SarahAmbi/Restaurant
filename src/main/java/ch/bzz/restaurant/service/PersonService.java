@@ -5,6 +5,8 @@ import ch.bzz.restaurant.model.Person;
 import ch.bzz.restaurant.model.Restaurant;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -47,6 +49,8 @@ public class PersonService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readPerson(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String personUUID
     ) {
         int httpStatus = 200;
@@ -62,8 +66,6 @@ public class PersonService {
 
     /**
      * inserts a new person
-     * @param firstname the firstname
-     * @param lastname the lastname
      * @return Response
      */
     @POST
@@ -84,24 +86,21 @@ public class PersonService {
 
     /**
      * updates a person
-     * @param personUUID the key
-     * @param firstname the date
-     * @param lastname the time
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updatePerson(
-            @FormParam("personUUID") String personUUID,
-            @FormParam("firstname") String firstname,
-            @FormParam("lastname") String lastname
+            @Valid @BeanParam Person person,
+            @FormParam("personUUID") String personUUID
     ) {
         int httpStatus = 200;
-        Person person = DataHandler.readPersonByUUID(personUUID);
-        if (person != null) {
-            person.setFirstname(firstname);
-            person.setLastname(lastname);
+        Person oldperson = DataHandler.readPersonByUUID(personUUID);
+        if (oldperson != null) {
+            oldperson.setPersonUUID(personUUID);
+            oldperson.setFirstname(person.getFirstname());
+            oldperson.setLastname(person.getLastname());
 
             DataHandler.updatePerson();
         } else {
@@ -121,6 +120,8 @@ public class PersonService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deletePerson(
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String personUUID
     ) {
         int httpStatus = 200;

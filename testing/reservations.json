@@ -1,23 +1,29 @@
-[
-    {
-        "personUUID": "3247c340-c712-402e-b400-0a23a9368c97",        
-        "reservationUUID": "ecd83148-5341-43c6-81ed-f3f4595965dc",
-        "date": "01/01/2022",
-        "time": "17:00",
-        "numberOfPersons": 2
-    },
-    {
-        "personUUID": "db117daa-e295-4597-abcd-a69496797dc0",
-        "reservationUUID": "606cc455-8bfd-4e24-85c1-ecf6b9814712",
-        "date": "01/01/2022",
-        "time": "13:00",
-        "numberOfPersons": 4
-    },
-    {
-        "personUUID": "73bd4187-a5b7-4864-be79-327bb8ed43bf",
-        "reservationUUID": "06f4534d-7b02-434f-9222-6544d30d8832",
-        "date": "01/01/2022",
-        "time": "12:00",
-        "numberOfPersons": 2
-    }
-]   
+[ {
+  "reservationUUID" : "ecd83148-5341-43c6-81ed-f3f4595965dc",
+  "date" : "23.06.2022",
+  "time" : "17:00",
+  "numberOfPersons" : 2,
+  "regularCustumer" : true,
+  "personUUID" : "3247c340-c712-402e-b400-0a23a9368c97"
+}, {
+  "reservationUUID" : "606cc455-8bfd-4e24-85c1-ecf6b9814712",
+  "date" : "12.02.2022",
+  "time" : "13:00",
+  "numberOfPersons" : 4,
+  "regularCustumer" : false,
+  "personUUID" : "db117daa-e295-4597-abcd-a69496797dc0"
+}, {
+  "reservationUUID" : "06f4534d-7b02-434f-9222-6544d30d8832",
+  "date" : "10.10.2022",
+  "time" : "12:00",
+  "numberOfPersons" : 2,
+  "regularCustumer" : false,
+  "personUUID" : "73bd4187-a5b7-4864-be79-327bb8ed43bf"
+}, {
+  "reservationUUID" : "82b9544e-ad75-49ef-8adc-dea65b996baa",
+  "date" : "07.06.2022",
+  "time" : "18:00",
+  "numberOfPersons" : 5,
+  "regularCustumer" : false,
+  "personUUID" : "db117daa-e295-4597-abcd-a69496797dc0"
+} ]

@@ -89,11 +89,13 @@ public class RestaurantService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateRestaurant(
-            @Valid @BeanParam Restaurant restaurant
+            @Valid @BeanParam Restaurant restaurant,
+            @FormParam("restaurantUUID") String restaurantUUID
     ) {
         int httpStatus = 200;
-        Restaurant oldRestaurant = DataHandler.readRestaurantByUUID(restaurant.getRestaurantUUID());
+        Restaurant oldRestaurant = DataHandler.readRestaurantByUUID(restaurantUUID);
         if (oldRestaurant != null) {
+            oldRestaurant.setRestaurantUUID(restaurantUUID);
             oldRestaurant.setName(restaurant.getName());
             oldRestaurant.setPlace(restaurant.getPlace());
             oldRestaurant.setNumberOfSeats(restaurant.getNumberOfSeats());

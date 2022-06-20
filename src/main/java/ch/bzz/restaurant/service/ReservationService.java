@@ -3,6 +3,9 @@ package ch.bzz.restaurant.service;
 import ch.bzz.restaurant.data.DataHandler;
 import ch.bzz.restaurant.model.Reservation;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -45,6 +48,8 @@ public class ReservationService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readReservation(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String reservationUUID
     ) {
         int httpStatus = 200;
@@ -60,33 +65,16 @@ public class ReservationService {
 
     /**
      * inserts a new reservation
-     * @param date the date
-     * @param time the time
-     * @param numberOfPersons the numberOfPersons
-     * @param regularCustumer the regularCustumer
-     * @param personUUID the uuid of the person
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertReservation(
-            @FormParam("date") String date,
-            @FormParam("time") String time,
-            @FormParam("numberOfPersons") int numberOfPersons,
-            @FormParam("regularCustumer") boolean regularCustumer,
-            @FormParam("personUUID") String personUUID
+            @Valid @BeanParam Reservation reservation
     ) {
-        Reservation reservation = new Reservation();
         reservation.setReservationUUID(UUID.randomUUID().toString());
-        setAttributes(
-                reservation,
-                date,
-                time,
-                numberOfPersons,
-                regularCustumer,
-                personUUID
-        );
+
         DataHandler.insertReservation(reservation);
         return Response
                 .status(200)
@@ -97,37 +85,23 @@ public class ReservationService {
 
     /**
      * updates a reservation
-     * @param reservationUUID the key
-     * @param date the date
-     * @param time the time
-     * @param numberOfPersons the numberOfPersons
-     * @param regularCustumer the regularCustumer
-     * @param personUUID the uuid of the publisher
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateReservation(
-            @FormParam("reservationUUID") String reservationUUID,
-            @FormParam("date") String date,
-            @FormParam("time") String time,
-            @FormParam("numberOfPersons") int numberOfPersons,
-            @FormParam("regularCustumer") boolean regularCustumer,
-            @FormParam("personUUID") String personUUID
+            @Valid @BeanParam Reservation reservation
     ) {
         int httpStatus = 200;
-        Reservation reservation = DataHandler.readReservationByUUID(reservationUUID);
-        if (reservation != null) {
-            setAttributes(
-                    reservation,
-                    date,
-                    time,
-                    numberOfPersons,
-                    regularCustumer,
-                    personUUID
-            );
-
+        Reservation oldReservation = DataHandler.readReservationByUUID(reservation.getReservationUUID());
+        if (oldReservation != null) {
+            oldReservation.setReservationUUID(reservation.getReservationUUID());
+            oldReservation.setDate(reservation.getDate());
+            oldReservation.setTime(reservation.getTime());
+            oldReservation.setNumberOfPersons(reservation.getNumberOfPersons());
+            oldReservation.setRegularCustumer(reservation.isRegularCustumer());
+            oldReservation.setPersonUUID(reservation.getPersonUUID());
             DataHandler.updateReservation();
         } else {
             httpStatus = 410;
@@ -146,6 +120,8 @@ public class ReservationService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteBook(
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String reservationUUID
     ) {
         int httpStatus = 200;

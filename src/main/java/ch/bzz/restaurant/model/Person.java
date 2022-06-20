@@ -19,12 +19,12 @@ public class Person {
 
     @FormParam("firstname")
     @NotEmpty
-    @Size(min=5, max=40)
+    @Size(min=3, max=40)
     private String firstname;
 
     @FormParam("lastname")
     @NotEmpty
-    @Size(min=5, max=40)
+    @Size(min=3, max=40)
     private String lastname;
 
     /**

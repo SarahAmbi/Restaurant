@@ -3,6 +3,9 @@ package ch.bzz.restaurant.model;
 import ch.bzz.restaurant.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.validation.constraints.*;
+import javax.ws.rs.FormParam;
+
 /**
  * a reservation in our restaurant
  *
@@ -14,10 +17,27 @@ public class Reservation {
     @JsonIgnore
     private Person client;
 
+    @FormParam("uuid")
+    @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String reservationUUID;
+
+    @FormParam("date")
+    @NotEmpty
     private String date;
+
+    @FormParam("time")
+    @NotEmpty
     private String time;
+
+
+    @FormParam("numberOfPersons")
+    @NotNull
+    @DecimalMin(value="1")
+    @DecimalMax(value="30")
     private int numberOfPersons;
+
+    @FormParam("regularCustumer")
+    @NotNull
     private boolean regularCustumer;
 
     /**
