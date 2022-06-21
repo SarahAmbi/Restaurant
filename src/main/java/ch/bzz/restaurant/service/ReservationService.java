@@ -91,17 +91,19 @@ public class ReservationService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateReservation(
-            @Valid @BeanParam Reservation reservation
+            @Valid @BeanParam Reservation reservation,
+            @FormParam("reservationUUID") String restaurantUUID,
+            @FormParam("personUUID") String personUUID
     ) {
         int httpStatus = 200;
-        Reservation oldReservation = DataHandler.readReservationByUUID(reservation.getReservationUUID());
+        Reservation oldReservation = DataHandler.readReservationByUUID(restaurantUUID);
         if (oldReservation != null) {
-            oldReservation.setReservationUUID(reservation.getReservationUUID());
+            oldReservation.setReservationUUID(restaurantUUID);
             oldReservation.setDate(reservation.getDate());
             oldReservation.setTime(reservation.getTime());
             oldReservation.setNumberOfPersons(reservation.getNumberOfPersons());
             oldReservation.setRegularCustumer(reservation.isRegularCustumer());
-            oldReservation.setPersonUUID(reservation.getPersonUUID());
+            oldReservation.setPersonUUID(personUUID);
             DataHandler.updateReservation();
         } else {
             httpStatus = 410;
