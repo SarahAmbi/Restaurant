@@ -2,9 +2,9 @@
  * view-controller for restaurantedit.html
  * @author Sarah
  */
-const userRole = getCookie("userRole");
+//const userRole = getCookie("userRole");
 document.addEventListener("DOMContentLoaded", () => {
-    showNav(userRole);
+    //showNav(userRole);
     readRestaurant();
 
     document.getElementById("restauranteditForm").addEventListener("submit", saveRestaurant);
@@ -43,12 +43,13 @@ function saveRestaurant(event) {
             body: data
         })
         .then(function (response) {
-            if (!response.ok) {
-                showMessage("Fehler beim Speichern", "error");
-                console.log(response);
+            if (response.ok) {
+                return response;
+            } else if (response.status === 401) {
+                window.location.href = "./";
             } else {
-                showMessage("Restaurant gespeichert", "info");
-                return response;}
+                showMessage("Error while saving", "error");
+            }
         })
         .catch(function (error) {
             console.log(error);
@@ -60,13 +61,15 @@ function saveRestaurant(event) {
  */
 function readRestaurant() {
     const restaurantUUID = getQueryParam("uuid");
-    fetch("./resource/restaurant/read?uuid=" + authorUUID, {
+    fetch("./resource/restaurant/read?uuid=" + restaurantUUID, {
         headers: { "Authorization": "Bearer " + readStorage("token")}
     })
         .then(function (response) {
             if (response.ok) {
                 return response;
-            } else {
+            } else if (response.status === 401){
+                window.location.href = "./";
+            } else{
                 console.log(response);
             }
         })
@@ -84,7 +87,6 @@ function readRestaurant() {
  * @param data  the author-data
  */
 function showRestaurant(data) {
-    const userRole = getCookie("userRole");
     document.getElementById("restaurantUUID").value = data.restaurantUUID;
     document.getElementById("place").value = data.place;
     document.getElementById("numberOfSeats").value = data.numberOfSeats;

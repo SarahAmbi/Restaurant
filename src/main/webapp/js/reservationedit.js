@@ -3,27 +3,27 @@
  * @author Sarah Ambi
  */
 document.addEventListener("DOMContentLoaded", () => {
-    readPublishers();
-    readBook();
+    readClients();
+    readReservation();
 
-    document.getElementById("reservationeditForm").addEventListener("submit", saveBook);
+    document.getElementById("reservationeditForm").addEventListener("submit", saveReservation);
     document.getElementById("cancel").addEventListener("click", cancelEdit);
 });
 
 /**
  * saves the data of a book
  */
-function saveBook(event) {
+function saveReservation(event) {
     event.preventDefault();
 
-    const bookForm = document.getElementById("bookeditForm");
-    const formData = new FormData(bookForm);
+    const reservationForm = document.getElementById("reservationeditForm");
+    const formData = new FormData(reservationForm);
     const data = new URLSearchParams(formData);
 
     let method;
-    let url = "./resource/book/";
-    const bookUUID = getQueryParam("uuid");
-    if (bookUUID == null) {
+    let url = "./resource/reservation/";
+    const reservationUUID = getQueryParam("uuid");
+    if (reservationUUID == null) {
         method = "POST";
         url += "create";
     } else {
@@ -53,9 +53,9 @@ function saveBook(event) {
 /**
  * reads a book
  */
-function readBook() {
-    const bookUUID = getQueryParam("uuid");
-    fetch("./resource/book/read?uuid=" + bookUUID)
+function readReservation() {
+    const reservationUUID = getQueryParam("uuid");
+    fetch("./resource/reservation/read?uuid=" + reservationUUID)
         .then(function (response) {
             if (response.ok) {
                 return response;
@@ -65,7 +65,7 @@ function readBook() {
         })
         .then(response => response.json())
         .then(data => {
-            showBook(data);
+            showReservation(data);
         })
         .catch(function (error) {
             console.log(error);
@@ -76,21 +76,21 @@ function readBook() {
  * show the data of a book
  * @param data  the book-data
  */
-function showBook(data) {
-    document.getElementById("bookUUID").value = data.bookUUID;
-    document.getElementById("title").value = data.title;
-    document.getElementById("author").value = data.author;
-    document.getElementById("publisher").value = data.publisherUUID;
-    document.getElementById("price").value = data.price;
-    document.getElementById("isbn").value = data.isbn;
+function showReservation(data) {
+    document.getElementById("reservationUUID").value = data.reservationUUID;
+    document.getElementById("date").value = data.title;
+    document.getElementById("time").value = data.author;
+    document.getElementById("client").value = data.personUUID;
+    document.getElementById("numberOfPersons").value = data.numberOfPersons;
+    document.getElementById("regularCustumer").value = data.regularCustumer;
 }
 
 /**
  * reads all publishers as an array
  */
-function readPublishers() {
+function readClients() {
 
-    fetch("./resource/publisher/list")
+    fetch("./resource/person/list")
         .then(function (response) {
             if (response.ok) {
                 return response;
@@ -100,7 +100,7 @@ function readPublishers() {
         })
         .then(response => response.json())
         .then(data => {
-            showPublishers(data);
+            showClients(data);
         })
         .catch(function (error) {
             console.log(error);
@@ -111,7 +111,7 @@ function readPublishers() {
  * shows all person as a dropdown
  * @param data
  */
-function showPersons(data) {
+function showClient(data) {
     let dropdown = document.getElementById("client");
     data.forEach(person => {
         let option = document.createElement("option");
