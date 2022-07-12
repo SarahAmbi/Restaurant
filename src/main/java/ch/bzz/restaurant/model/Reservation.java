@@ -29,7 +29,6 @@ public class Reservation {
     @NotEmpty
     private String time;
 
-
     @FormParam("numberOfPersons")
     @NotNull
     @DecimalMin(value="1")

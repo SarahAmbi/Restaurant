@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sarah Ambi"/>
+    <meta name="project" content="Restaurant"/>
+    <meta name="description" content="restaurant form edit"/>
+    <title>Buch bearbeiten</title>
+    <script src="./js/restaurantedit.js"></script>
+    <script src="./js/util.js"></script>
+</head>
+<body>
+<h3>Restaurant bearbeiten</h3>
+<nav id="nav">
+    <ul>
+        <li><a href='./restaurant.html'>Restaurant</a></li>
+        <li><a href='./person.html'>Person</a></li>
+        <li><a href='./reservation.html'>Reservation</a></li>
+        <li><a href='./index.html'>Abmelden</a></li>
+    </ul>
+</nav>
+<form id="restauranteditForm" name="restaurantedit">
+    <table>
+        <tr>
+            <td><label for="name">Name</label></td>
+            <td>
+                <input id="name" name="name" type="text" size="30" minlength="2" maxlength="30" required/>
+                <input id="restaurantUUID" name="restaurantUUID" type="hidden"/>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="place">Ort</label></td>
+            <td><input id="place" name="place" type="text" size="30" minlength="5" maxlength="50" required/></td>
+        </tr>
+        <tr>
+            <td><label for="numberOfSeats">Anzahl Plätze</label></td>
+            <td><input id="numberOfSeats" name="numberOfSeats" type="number" size="30" minlength="5" maxlength="50" required/></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <button id="save" type="submit">Speichern</button>
+            </td>
+            <td>
+                <button id="reset" type="reset">Zurücksetzen</button>
+            </td>
+            <td>
+                <button id="cancel" type="button">Abbruch</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

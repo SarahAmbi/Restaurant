@@ -1,0 +1,18 @@
+input:read-only {
+    background-color: lightgrey;
+}
+
+th {
+    text-align: left;
+}
+.info {
+    color: green;
+}
+
+.warning {
+    color: yellow;
+}
+
+.error {
+    color: red;
+}

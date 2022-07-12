@@ -3,6 +3,7 @@ package ch.bzz.restaurant.data;
 import ch.bzz.restaurant.model.Person;
 import ch.bzz.restaurant.model.Reservation;
 import ch.bzz.restaurant.model.Restaurant;
+import ch.bzz.restaurant.model.User;
 import ch.bzz.restaurant.service.Config;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,10 +20,10 @@ import java.util.List;
  * reads and writes the data in the JSON-files
  */
 public class DataHandler {
-    private static DataHandler instance = null;
     private static List<Reservation> reservationList;
     private static List<Person> personList;
     private static List<Restaurant> restaurantList;
+    private static List<User> userList;
 
     /**
      * private constructor defeats instantiation
@@ -37,6 +38,7 @@ public class DataHandler {
         DataHandler.setReservationList(null);
         DataHandler.setPersonList(null);
         DataHandler.setRestaurantList(null);
+        DataHandler.setUserList(null);
     }
 
 
@@ -89,6 +91,91 @@ public class DataHandler {
             }
         }
         return person;
+    }
+
+    /**
+     * reads a user by the username/password provided
+     *
+     * @param username
+     * @param password
+     * @return user-object
+     */
+    public static User readUser(String username, String password) {
+        User user = new User();
+        List<User> userList = readJson();
+        for (User entry : getUserList()) {
+            if (entry.getUsername().equals(username) &&
+                    entry.getPassword().equals(password)) {
+                user = entry;
+            }
+        }
+        return user;
+    }
+
+    
+    
+    public static List<User> readJson(){
+        List<User> userList = new ArrayList<>();
+        try {
+            byte[] jsonData = Files.readAllBytes(
+                    Paths.get(
+                            Config.getProperty("userJSON")
+                    )
+            );
+            ObjectMapper objectMapper = new ObjectMapper();
+            User[] users = objectMapper.readValue(jsonData, User[].class);
+            for (User user : users) {
+                userList.add(user);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return userList;
+
+    }
+
+    /**
+     * reads the users from the JSON-file
+     */
+    private static void readUserJSON() {
+        try {
+            byte[] jsonData = Files.readAllBytes(
+                    Paths.get(
+                            Config.getProperty("userJSON")
+                    )
+            );
+            ObjectMapper objectMapper = new ObjectMapper();
+            User[] users = objectMapper.readValue(jsonData, User[].class);
+            for (User user : users) {
+                getUserList().add(user);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * gets userList
+     *
+     * @return value of userList
+     */
+
+    public static List<User> getUserList() {
+        if (DataHandler.userList == null) {
+            DataHandler.setUserList(new ArrayList<>());
+            readUserJSON();
+        }
+        return userList;
+    }
+
+    /**
+     * sets userList
+     *
+     * @param userList the value to set
+     */
+
+    public static void setUserList(List<User> userList) {
+        DataHandler.userList = userList;
     }
 
     /**

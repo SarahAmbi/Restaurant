@@ -2,6 +2,7 @@ package ch.bzz.restaurant.service;
 
 import ch.bzz.restaurant.data.DataHandler;
 import ch.bzz.restaurant.model.Reservation;
+import jakarta.annotation.security.RolesAllowed;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -27,6 +28,7 @@ public class ReservationService {
      *
      * @return reservations as JSON
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -44,6 +46,7 @@ public class ReservationService {
      * @param reservationUUID
      * @return reservation
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -63,10 +66,13 @@ public class ReservationService {
                 .build();
     }
 
+
     /**
      * inserts a new reservation
+     * @param reservation
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -85,20 +91,24 @@ public class ReservationService {
 
     /**
      * updates a reservation
+     * @param reservation
+     * @param reservationUUID
+     * @param personUUID
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateReservation(
             @Valid @BeanParam Reservation reservation,
-            @FormParam("reservationUUID") String restaurantUUID,
+            @FormParam("reservationUUID") String reservationUUID,
             @FormParam("personUUID") String personUUID
     ) {
         int httpStatus = 200;
-        Reservation oldReservation = DataHandler.readReservationByUUID(restaurantUUID);
+        Reservation oldReservation = DataHandler.readReservationByUUID(reservationUUID);
         if (oldReservation != null) {
-            oldReservation.setReservationUUID(restaurantUUID);
+            oldReservation.setReservationUUID(reservationUUID);
             oldReservation.setDate(reservation.getDate());
             oldReservation.setTime(reservation.getTime());
             oldReservation.setNumberOfPersons(reservation.getNumberOfPersons());
@@ -118,12 +128,11 @@ public class ReservationService {
      * @param reservationUUID  the key
      * @return  Response
      */
+    @RolesAllowed({"admin"})
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteBook(
-            @NotEmpty
-            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String reservationUUID
     ) {
         int httpStatus = 200;

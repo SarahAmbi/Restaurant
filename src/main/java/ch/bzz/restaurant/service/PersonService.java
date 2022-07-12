@@ -2,7 +2,6 @@ package ch.bzz.restaurant.service;
 
 import ch.bzz.restaurant.data.DataHandler;
 import ch.bzz.restaurant.model.Person;
-import ch.bzz.restaurant.model.Restaurant;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -12,6 +11,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.UUID;
+import jakarta.annotation.security.RolesAllowed;
+
 
 /**
  * services for reading, adding, changing and deleting restaurants
@@ -28,6 +29,7 @@ public class PersonService {
      *
      * @return persons as JSON
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -45,6 +47,7 @@ public class PersonService {
      * @param personUUID
      * @return person
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -66,8 +69,10 @@ public class PersonService {
 
     /**
      * inserts a new person
+     * @param person
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -84,10 +89,14 @@ public class PersonService {
 
     }
 
+
     /**
      * updates a person
+     * @param person
+     * @param personUUID
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
@@ -111,17 +120,17 @@ public class PersonService {
                 .entity("")
                 .build();
     }
+
     /**
      * deletes a person identified by its uuid
      * @param personUUID  the key
      * @return  Response
      */
+    @RolesAllowed({"admin"})
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deletePerson(
-            @NotEmpty
-            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String personUUID
     ) {
         int httpStatus = 200;

@@ -11,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.UUID;
+import jakarta.annotation.security.RolesAllowed;
 
 /**
  * services for reading, adding, changing and deleting restaurants
@@ -26,6 +27,7 @@ public class RestaurantService {
      * reads a list of all restaurants
      * @return  restaurants as JSON
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -42,6 +44,7 @@ public class RestaurantService {
      * @param restaurantUUID
      * @return restaurant
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -63,8 +66,10 @@ public class RestaurantService {
 
     /**
      * inserts a new restaurant
+     * @param restaurant
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -83,8 +88,11 @@ public class RestaurantService {
 
     /**
      * updates a restaurant
+     * @param restaurant
+     * @param restaurantUUID
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
@@ -114,12 +122,11 @@ public class RestaurantService {
      * @param restaurantUUID  the key
      * @return  Response
      */
+    @RolesAllowed({"admin"})
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteRestaurant(
-            @NotEmpty
-            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String restaurantUUID
     ) {
         int httpStatus = 200;

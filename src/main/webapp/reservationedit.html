@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sarah Ambi"/>
+    <meta name="project" content="Restaurant"/>
+    <meta name="description" content="reservation form edit"/>
+    <title>Buch bearbeiten</title>
+    <script src="./js/reservationedit.js"></script>
+    <script src="./js/util.js"></script>
+</head>
+<body>
+<h3>Reservation bearbeiten</h3>
+<nav id="nav">
+    <li><a href='./restaurant.html'>Restaurant</a></li>
+    <li><a href='./person.html'>Person</a></li>
+    <li><a href='./reservation.html'>Reservation</a></li>
+    <li><a href='./index.html'>Abmelden</a></li>
+</nav>
+<form id="reservationeditForm" name="reservationedit">
+    <table>
+        <tr>
+            <td><label for="date">Reservationsdatum</label></td>
+            <td>
+                <input id="date" name="date" type="text" size="30" minlength="2" maxlength="30" required/>
+                <input id="reservationUUID" name="reservationUUID" type="hidden"/>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="client">Name</label></td>
+            <td>
+                <select id="client" name="personUUID" required>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="time">Zeit</label></td>
+            <td><input id="time" name="time" type="text" size="30" minlength="5" maxlength="50" required/></td>
+        </tr>
+        <tr>
+            <td><label for="numberOfPersons">Anzahl Personen</label></td>
+            <td><input id="numberOfPersons" name="numberOfPersons" type="number" min="0.05" max="199.95" step="0.05"/></td>
+        </tr>
+        <tr>
+            <td><label for="regularCustumer">Stammkunde</label></td>
+            <td><input id="regularCustumer" name="regularCustumer" type="text"/></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <button id="save" type="submit">Speichern</button>
+            </td>
+            <td>
+                <button id="reset" type="reset">Zurücksetzen</button>
+            </td>
+            <td>
+                <button id="cancel" type="button">Abbruch</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
