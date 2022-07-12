@@ -1,0 +1,2530 @@
+{
+	"info": {
+		"_postman_id": "8ad9d40c-3acc-432d-8b2c-a28a756b691f",
+		"name": "Restaurant_M3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "insertReservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "19:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertReservation with small number of Persons",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "18:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "-2",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertReservation with big number of Persons Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "18:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertReservation with missing number of Persons",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "18:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertReservation with missing date",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "date",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "18:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "30",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertReservation with missing time",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "reservationUUID",
+							"value": "ecd83148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "22:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReservation with missing number of persons",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "reservationUUID",
+							"value": "dc0a188f-7eaf-4600-b820-45cbe5b74631",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "22:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReservation with invalid number of persons",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "reservationUUID",
+							"value": "dc0a188f-7eaf-4600-b820-45cbe5b74631",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "22:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReservation with big number of persons",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "reservationUUID",
+							"value": "dc0a188f-7eaf-4600-b820-45cbe5b74631",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "22:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "10000",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReservation with missing time",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "reservationUUID",
+							"value": "dc0a188f-7eaf-4600-b820-45cbe5b74631",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReservation with missing date",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "reservationUUID",
+							"value": "dc0a188f-7eaf-4600-b820-45cbe5b74631",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "22:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateReservation with wrong uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "reservationUUID",
+							"value": "dc0a188f-7eaf-4600-b820-45cbe5b74633",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "07.06.2022",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "22:00",
+							"type": "text"
+						},
+						{
+							"key": "numberOfPersons",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "regularCustumer",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "personUUID",
+							"value": "db117daa-e295-4597-abcd-a69496797dc0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteReservation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/delete?uuid=ecd83148-5341-43c6-81ed-f3f4595965dc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd83148-5341-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteReservation with missing uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/delete?uuid=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteReservation with wrong uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/reservation/delete?uuid=606cc455-8bfd-4e24-85c1-ecf6b9814722",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"reservation",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "606cc455-8bfd-4e24-85c1-ecf6b9814722"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertRestaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "India Rest",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "New York",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertRestaurant with short restaurant name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "I",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "New York",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertRestaurant with short place name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Swiss Restaurant",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "N",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertRestaurant with long restaurant name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "New York",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertRestaurant with missing name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "New York",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertRestaurant with missing place",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "India Rest",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertRestaurant with missing number of seats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is \", function() {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Indian Restaurant",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "New Jersey",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertRestaurant with negative number of seats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is \", function() {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Indian Restaurant",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "New Jersey",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "-3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertRestaurant with big number of seats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is \", function() {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Indian Restaurant",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "New Jersey",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "1000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateRestaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "restaurantUUID",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Nüni New",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "Zurich",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateRestaurant missing place",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "restaurantUUID",
+							"value": "606cc455-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Indian Restaurant",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateRestaurant missing name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "restaurantUUID",
+							"value": "606cc455-8bfd-4e24-85c1-ecf6b9814712",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Indian Restaurant",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "New Jersey",
+							"type": "text"
+						},
+						{
+							"key": "numberOfSeats",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteRestaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteRestaurant with missing uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/delete?uuid=",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteRestaurant with wrong uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/restaurant/delete?uuid=d5a9d2b9-1f58-4d5e-abfd-09a22ee1c999",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"restaurant",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "d5a9d2b9-1f58-4d5e-abfd-09a22ee1c999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertPerson",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "Sarak",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Rasalingam",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertPerson with short last name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "Sarah",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "R",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertPerson with short first name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "S",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Rasalingam",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertPerson with missing last name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "Sarah",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertPerson with missing first name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Rasalingam",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePerson",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "personUUID",
+							"value": "73bd4187-a5b7-4864-be79-327bb8ed43bf",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Sarah",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Ambi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePerson with missing first name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "personUUID",
+							"value": "c746a291-0ef9-4b2a-8268-392b12d636bd",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Ambi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePerson with short first name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "personUUID",
+							"value": "c746a291-0ef9-4b2a-8268-392b12d636bd",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "S",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Ambi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePerson with missing last name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "personUUID",
+							"value": "c746a291-0ef9-4b2a-8268-392b12d636bd",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Sarah",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePerson with short last name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "personUUID",
+							"value": "c746a291-0ef9-4b2a-8268-392b12d636bd",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "Sarah",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "A",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePerson",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/delete?uuid=3247c340-c712-402e-b400-0a23a9368c97",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "3247c340-c712-402e-b400-0a23a9368c97"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePerson with wrong uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/delete?uuid=db117daa-e295-4597-abcd-a69496797d00",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "db117daa-e295-4597-abcd-a69496797d00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePerson with missing uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(410);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/Restaurant-1.0/resource/person/delete?uuid=",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"person",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "valid login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "musterh",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "passwort",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "invalid login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "musterh",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "passwort1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Restaurant-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Restaurant-1.0",
+						"resource",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
